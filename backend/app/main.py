@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 from app import models
-from app.database import engine
+from app.database import engine, SessionLocal
 from app.routers import meetings
 
 # Create database tables automatically on startup
@@ -20,6 +20,25 @@ with engine.connect() as conn:
         conn.commit()
     except Exception:
         pass
+
+# Auto-seed the database if it's empty (needed for fresh deployments like Render)
+def auto_seed():
+    db = SessionLocal()
+    try:
+        count = db.query(models.Meeting).count()
+        if count == 0:
+            print("==> Database is empty — running seed data...")
+            from seed import seed_data
+            seed_data()
+            print("==> Seed complete.")
+        else:
+            print(f"==> Database already has {count} meeting(s), skipping seed.")
+    except Exception as e:
+        print(f"==> Auto-seed failed: {e}")
+    finally:
+        db.close()
+
+auto_seed()
 
 app = FastAPI(
     title="Fireflies.ai Clone Backend",
