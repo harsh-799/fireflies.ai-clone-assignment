@@ -1,0 +1,27 @@
+- [x] Create Next.js rewrite rule in `next.config.ts`
+- [x] Configure `page.tsx` default session state and `API_BASE_URL`
+- [x] Enable CORS on FastAPI backend in `app/main.py`
+- [x] Add columns to `models.py` and run SQLite startup migrations in `app/main.py`
+- [x] Update `schemas.py` with mapped field definitions (ActionItems, TranscriptSegment, MeetingDetail, MeetingListItem, MeetingCreate, MeetingUpdate)
+- [x] Update `app/services/transcript_parser.py` (clean speaker time tags, second-based duration)
+- [x] Update `seed.py` with second-based durations
+- [x] Update `tests/test_meetings.py` with second-based durations
+- [x] Run backend `seed.py` to re-seed database with correct durations
+- [x] Update `meetings.py` backend router endpoints (participant, sorting, transcript segments, regenerate summary, export markdown)
+- [x] Run backend tests (pytest)
+- [x] Build frontend (npm run build)
+- [x] Perform end-to-end flow checks and verify functionality
+- [x] Implement active speaker highlighting & play timer sync
+- [x] Implement card hover menu (Rename & Delete options)
+- [x] Remove "Captured From" and "Privacy" filters
+- [x] Global frontend rename from "Varun Joshi" to "Harsh Anand"
+- [x] Remove mock entries and only load database meetings in meetings list view
+- [x] Refactor UploadsView page layout and remove notice banner
+- [x] Connect TXT file uploads to `POST /api/meetings/from-transcript-file` and prompt for Title & Date
+- [x] Connect text pastes to `POST /api/meetings/from-transcript`
+- [x] Map uploads recent list to backend meetings data
+- [x] Convert filter checkboxes containers to div element wrapper layers to resolve label double-toggling event conflicts
+- [x] Redesign FirefliesLogoMark to display a custom geometric stack vector logo
+- [x] Simplify Left Analytics panel inside DetailView by removing Sentiments, AI Filters, Speaker Talktime, and Topic Trackers, linking Smart Search to Transcript search query filtering
+- [x] Remove card border and rounded-xl classes from Transcript view wrapper in `Transcript.tsx` to align flat with the tabs container
+- [x] Verify frontend compiler checks
